@@ -1,235 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Music app</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="container">
-        <div class="music-player">
-            <nav>
-                <div class="left-btn"><</div>
-                <div class="right-btn">=</div>
-            </nav>
+      <div class="music-player">
+        <nav>
+          <div class="left-btn"><i class="fa-solid fa-chevron-left"></i></div>
+          <div class="right-btn">
+            <i class="fa-solid fa-bars"></i>
+          </div>
+        </nav>
 
-            <div class="previous-next">
-                <button onclick="previousSongMethod()" id="prev-song"><</button>
-                <button onclick="nextsSongMethod()" id="next-song">></button>
-            </div>
-            
-            <img id="music-img" src="Chleya-song-image.jpg" alt="music-image">
+        <img id="music-img" src="Chleya-song-image.jpg" alt="music-image" />
 
-            <h2 id="music-title">Chaleya From("Jawan")</h2>
-            <p id="music-artist">Shilpa Rav Ft. Arijit Singh</p>
+        <h2 id="music-title">Chaleya From("Jawan")</h2>
+        <p id="music-artist">Shilpa Rav Ft. Arijit Singh</p>
 
-            <audio id="song">
-                <source src="Chleya-song-arijit-singh.mp3" type="audio/mp3">
-            </audio>
+        <audio id="song">
+          <source src="Chleya-song-arijit-singh.mp3" type="audio/mp3" />
+        </audio>
 
-            <div class="progress-timing">
-                <div id="current-time">0:00</div>
-                <div id="duration">0:00</div>
-            </div>
-
-            <input type="range" value="0" max="100" id="progress">
-
-            <div class="controls">
-                <div onclick="skipBackward()"><i class="fa-solid fa-backward" id="backward-btn"></i></div>
-                <div onclick="playPause()"><i class="fa-solid fa-play" id="ctrIcon"></i></div>
-                <div onclick="skipForward()"><i class="fa-solid fa-forward" id="forward-btn"></i></div>
-            </div>
+        <div class="progress-timing">
+          <div id="current-time">0:00</div>
+          <div id="duration">0:00</div>
         </div>
+
+        <input type="range" value="0" max="100" id="progress" />
+
+        <div class="controls">
+          <div onclick="previousSongMethod()">
+            <i class="fa-solid fa-backward-step"></i>
+          </div>
+          <div onclick="playPause()">
+            <i class="fa-solid fa-play" id="ctrIcon"></i>
+          </div>
+          <div onclick="nextsSongMethod()">
+            <i class="fa-solid fa-forward-step"></i>
+          </div>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 
-<!-- Javascript file -->
-<script>
-
+  <!-- Javascript file -->
+  <script>
     const songs = [
-        {
-            title: 'Chleya ("From Jawan")',
-            artist: "Anirudh . Ravichader . Arijit Singh . Shilpa Rao",
-            src: "Chleya-song-arijit-singh.mp3",
-            poster: "Chleya-song-image.jpg",
-        },
-        {
-            title: "Heeriye (Feat Arijit Singh)",
-            artist: "Jasleen Royal . Arijit Singh . Dulquer Sulmaan",
-            src: " Heeriye-arijit-singh.mp3",
-            poster: "Heeriye-song-image.jpg",
-        },
-        {
-            title: 'Channa Mereya',
-            artist: "Pritam . Arijit Singh",
-            src: "Channa-mereya-arijit-singh.mp3",
-            poster: "Channa-mereya-song-image.jpg",
-        },
-        {
-            title: 'Tere Vaaste',
-            artist: "Varun jain. Sachin Jigar . Arijit Singh",
-            src: "Tere-waste-song.mp3",
-            poster: "tere-vaaste-poster.jpg",
-        },
-        {
-            title: 'Pasoori Nu',
-            artist: "Arijit Singh . Rochak Kolhi. Tulsi Kumar",
-            src: "Pasoorinu-song.mp3",
-            poster: "Pasoori-Nu-poster.jpg",
-        },
-        {
-            title: 'Kya Loge Tum',
-            artist: "B Praak . Jaani",
-            src: "Kya-Loge-Tum-song.mp3",
-            poster: "Kya-Loge-Tum-img.jpg",
-        },
-        {
-            title: 'Kahani Suno 2.0',
-            artist: "Kaifi Khalil",
-            src: "Kahani-Suno-song-2.0.mp3",
-            poster: "khani-suno-image.jpg",
-        },
-        {
-            title: 'Tere Pyaar Mein',
-            artist: "Pritam . Arijit Singh . Nikhita Gandhi",
-            src: "Tere-Pyar-Mein-song.mp3",
-            poster: "Tere-Pyaar-Mein-image.jpg",
-        }
+      {
+        title: 'Chleya ("From Jawan")',
+        artist: "Anirudh . Ravichader . Arijit Singh . Shilpa Rao",
+        src: "Chleya-song-arijit-singh.mp3",
+        poster: "Chleya-song-image.jpg",
+      },
+      {
+        title: "Heeriye (Feat Arijit Singh)",
+        artist: "Jasleen Royal . Arijit Singh . Dulquer Sulmaan",
+        src: " Heeriye-arijit-singh.mp3",
+        poster: "Heeriye-song-image.jpg",
+      },
+      {
+        title: "Channa Mereya",
+        artist: "Pritam . Arijit Singh",
+        src: "Channa-mereya-arijit-singh.mp3",
+        poster: "Channa-mereya-song-image.jpg",
+      },
+      {
+        title: "Tere Vaaste",
+        artist: "Varun jain. Sachin Jigar . Arijit Singh",
+        src: "Tere-waste-song.mp3",
+        poster: "tere-vaaste-poster.jpg",
+      },
+      {
+        title: "Pasoori Nu",
+        artist: "Arijit Singh . Rochak Kolhi. Tulsi Kumar",
+        src: "Pasoorinu-song.mp3",
+        poster: "Pasoori-Nu-poster.jpg",
+      },
+      {
+        title: "Kya Loge Tum",
+        artist: "B Praak . Jaani",
+        src: "Kya-Loge-Tum-song.mp3",
+        poster: "Kya-Loge-Tum-img.jpg",
+      },
+      {
+        title: "Kahani Suno 2.0",
+        artist: "Kaifi Khalil",
+        src: "Kahani-Suno-song-2.0.mp3",
+        poster: "khani-suno-image.jpg",
+      },
+      {
+        title: "Tere Pyaar Mein",
+        artist: "Pritam . Arijit Singh . Nikhita Gandhi",
+        src: "Tere-Pyar-Mein-song.mp3",
+        poster: "Tere-Pyaar-Mein-image.jpg",
+      },
     ];
 
-    let progress = document.getElementById('progress');
-    let song = document.getElementById('song');
-    let ctrIcon = document.getElementById('ctrIcon');
-    let musicPoster = document.getElementById('music-img');
-    let musicTitle = document.getElementById('music-title');
-    let musicArtist = document.getElementById('music-artist');
-    let previousSong = document.getElementById('prev-song');
-    let nextSong = document.getElementById('next-song');
+    let progress = document.getElementById("progress");
+    let song = document.getElementById("song");
+    let ctrIcon = document.getElementById("ctrIcon");
+    let musicPoster = document.getElementById("music-img");
+    let musicTitle = document.getElementById("music-title");
+    let musicArtist = document.getElementById("music-artist");
+    let previousSong = document.getElementById("prev-song");
+    let nextSong = document.getElementById("next-song");
     let currentSongIndex = 0;
-    let currentTimeDisplay = document.getElementById('current-time');
-    let durationDisplay = document.getElementById('duration');
-   
+    let currentTimeDisplay = document.getElementById("current-time");
+    let durationDisplay = document.getElementById("duration");
+    let songsList = document.getElementById("songsList");
 
-    song.onloadedmetadata = function(){
-        progress.max = song.duration;
-        progress.value = song.currentTime;
-        const music = songs[currentSongIndex];
-        durationDisplay.textContent = '00:00';
-    }
+    song.onloadedmetadata = function () {
+      progress.max = song.duration;
+      progress.value = song.currentTime;
+      const music = songs[currentSongIndex];
+      durationDisplay.textContent = "00:00";
+    };
 
     // PlayPause function
-    function playPause(){
-        if(ctrIcon.classList.contains("fa-pause")){
-            song.pause();
-            ctrIcon.classList.remove("fa-pause");
-            ctrIcon.classList.add("fa-play");
-        }
-        else{
-            song.play();
-            ctrIcon.classList.add("fa-pause");
-            ctrIcon.classList.remove("fa-play");
-        }
+    function playPause() {
+      if (ctrIcon.classList.contains("fa-pause")) {
+        song.pause();
+        ctrIcon.classList.remove("fa-pause");
+        ctrIcon.classList.add("fa-play");
+      } else {
+        song.play();
+        ctrIcon.classList.add("fa-pause");
+        ctrIcon.classList.remove("fa-play");
+      }
     }
 
     // Update current time and duration
     function updateTime() {
-        currentTimeDisplay.textContent = formatTime(song.currentTime);
-        durationDisplay.textContent = formatTime(song.duration);
-        progress.value = song.currentTime;
+      currentTimeDisplay.textContent = formatTime(song.currentTime);
+      durationDisplay.textContent = formatTime(song.duration);
+      progress.value = song.currentTime;
     }
 
     // Format time in mm:ss
     function formatTime(timeInSeconds) {
-        const minutes = Math.floor(timeInSeconds / 60);
-        const seconds = Math.floor(timeInSeconds % 60);
-        return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+      const minutes = Math.floor(timeInSeconds / 60);
+      const seconds = Math.floor(timeInSeconds % 60);
+      return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(
+        2,
+        "0"
+      )}`;
     }
 
     // Attach timeupdate event listener
-    song.addEventListener('timeupdate', updateTime);
+    song.addEventListener("timeupdate", updateTime);
 
     //Song Progress
-    if(song.play()){
-        setInterval(()=>{
-            progress.value = song.currentTime;
-        }, 500);
+    if (song.play()) {
+      setInterval(() => {
+        progress.value = song.currentTime;
+      }, 500);
     }
 
     progress.onchange = function () {
-        song.pause(); // Pause the song
-        song.currentTime = progress.value;
-        song.play(); // Resume playing
-        ctrIcon.classList.add("fa-pause");
-        ctrIcon.classList.remove("fa-play");
+      song.pause(); // Pause the song
+      song.currentTime = progress.value;
+      song.play(); // Resume playing
+      ctrIcon.classList.add("fa-pause");
+      ctrIcon.classList.remove("fa-play");
     };
 
-    //Forward button
+    // Forward button
     function skipForward() {
-        if (song.currentTime + 5 < song.duration) {
-            song.currentTime += 5;
-        } else {
-            song.play();
-        }
+      if (song.currentTime + 5 < song.duration) {
+        song.currentTime += 5;
+      } else {
+        song.play();
+      }
     }
 
     //Backward button
     function skipBackward() {
-        if (song.currentTime - 5 < song.duration) {
-            song.currentTime -= 5;
-        } else {
-            song.play();
-        }
+      if (song.currentTime - 5 < song.duration) {
+        song.currentTime -= 5;
+      } else {
+        song.play();
+      }
     }
 
     //Loading songs
-    function loadSong(currentSongIndex){
-        const Music = songs[currentSongIndex];
-        song.src = Music.src;
-        musicPoster.src = Music.poster;
-        musicArtist.textContent = Music.artist;
-        musicTitle.textContent = Music.title;
+    function loadSong(currentSongIndex) {
+      const Music = songs[currentSongIndex];
+      song.src = Music.src;
+      musicPoster.src = Music.poster;
+      musicArtist.textContent = Music.artist;
+      musicTitle.textContent = Music.title;
     }
 
-    //Previous song
-    function previousSongMethod(){
-        song.pause(); // Pause the song
-        song.currentTime = progress.value;
-        song.play(); // Resume playing
-        ctrIcon.classList.add("fa-pause");
-        ctrIcon.classList.remove("fa-play");
+    // Function to show all songs in the songs list
+    function showAllSongs() {
+      const songsListElement = document.getElementById("songsList");
+      songsListElement.innerHTML = ""; // Clear previous list items
 
-        currentSongIndex = (currentSongIndex + 1) % songs.length;
-        loadSong(currentSongIndex);
-        song.play();
+      songs.forEach((song, index) => {
+        const listItem = document.createElement("li");
+        listItem.textContent = `${index + 1}. ${song.title}`;
+        songsListElement.appendChild(listItem);
+      });
+    }
+
+    // Call the function to show all songs
+    showAllSongs();
+
+    //Previous song
+    function previousSongMethod() {
+      song.pause(); // Pause the song
+      song.currentTime = progress.value;
+      song.play(); // Resume playing
+      ctrIcon.classList.add("fa-pause");
+      ctrIcon.classList.remove("fa-play");
+
+      currentSongIndex = (currentSongIndex + 1) % songs.length;
+      loadSong(currentSongIndex);
+      song.play();
     }
 
     //Next song
     function nextsSongMethod() {
-        song.pause(); // Pause the song
-        song.currentTime = progress.value;
-        song.play(); // Resume playing
-        ctrIcon.classList.add("fa-pause");
-        ctrIcon.classList.remove("fa-play");
+      song.pause(); // Pause the song
+      song.currentTime = progress.value;
+      song.play(); // Resume playing
+      ctrIcon.classList.add("fa-pause");
+      ctrIcon.classList.remove("fa-play");
 
-        currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
-        loadSong(currentSongIndex);
-        song.play();
+      currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+      loadSong(currentSongIndex);
+      song.play();
     }
 
     loadSong(currentSongIndex);
 
     // Function to load and play the next song if first end
     function playNextSong() {
-        currentSongIndex = (currentSongIndex + 1) % songs.length;
-        loadSong(currentSongIndex);
-        song.play();
+      currentSongIndex = (currentSongIndex + 1) % songs.length;
+      loadSong(currentSongIndex);
+      song.play();
     }
 
     // Add an event listener for the "ended" event
-    song.addEventListener('ended', playNextSong);
-
-
-</script>
-<script src="https://kit.fontawesome.com/482c87a014.js" crossorigin="anonymous"></script>
+    song.addEventListener("ended", playNextSong);
+  </script>
+  <script
+    src="https://kit.fontawesome.com/482c87a014.js"
+    crossorigin="anonymous"
+  ></script>
 </html>
